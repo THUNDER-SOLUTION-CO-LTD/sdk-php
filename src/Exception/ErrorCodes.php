@@ -1,0 +1,91 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Thunder\Exception;
+
+/** Shared error-code mapping. Code takes precedence over HTTP status. */
+final class ErrorCodes
+{
+    /** @var array<string, class-string<ApiError>> */
+    public const CODES = [
+        'MISSING_API_KEY' => AuthenticationError::class,
+        'INVALID_API_KEY' => AuthenticationError::class,
+        'BRANCH_INACTIVE' => PermissionDeniedError::class,
+        'SERVICE_BANNED' => PermissionDeniedError::class,
+        'SERVICE_DELETED' => PermissionDeniedError::class,
+        'USER_BANNED' => PermissionDeniedError::class,
+        'IP_NOT_ALLOWED' => PermissionDeniedError::class,
+        'SERVICE_EXPIRED' => PermissionDeniedError::class,
+        'QUOTA_EXCEEDED' => QuotaExceededError::class,
+        'VALIDATION_ERROR' => InvalidRequestError::class,
+        'INVALID_BANK_CODE' => InvalidRequestError::class,
+        'INVALID_EXTRA_VERIFY' => InvalidRequestError::class,
+        'INVALID_MATCH_MODE' => InvalidRequestError::class,
+        'IMAGE_SIZE_TOO_LARGE' => InvalidImageError::class,
+        'INVALID_IMAGE_FORMAT' => InvalidImageError::class,
+        'INVALID_IMAGE_TYPE' => InvalidImageError::class,
+        'INVALID_IMAGE' => InvalidImageError::class,
+        'INVALID_WALLET_QR' => InvalidImageError::class,
+        'URL_PROTOCOL_NOT_ALLOWED' => InvalidUrlError::class,
+        'URL_INVALID_IP_RANGE' => InvalidUrlError::class,
+        'IMAGE_URL_UNREACHABLE' => InvalidUrlError::class,
+        'INVALID_CALLBACK_URL' => InvalidUrlError::class,
+        'SLIP_NOT_FOUND' => SlipNotFoundError::class,
+        'SLIP_PENDING' => SlipPendingError::class,
+        'BANK_ACCOUNT_NOT_FOUND' => NotFoundError::class,
+        'JOB_NOT_FOUND' => NotFoundError::class,
+        'NOT_FOUND' => NotFoundError::class,
+        'BANK_ACCOUNT_DUPLICATE' => ConflictError::class,
+        'RATE_LIMIT_EXCEEDED' => RateLimitError::class,
+        'API_SERVER_ERROR' => ServerError::class,
+        'INTERNAL_SERVER_ERROR' => ServerError::class,
+        'RENEWAL_TEMPORARILY_UNAVAILABLE' => ServiceUnavailableError::class,
+        'CALLBACK_UNAVAILABLE' => ServiceUnavailableError::class,
+        'unauthorized' => AuthenticationError::class,
+        'access_denied' => PermissionDeniedError::class,
+        'account_not_verified' => PermissionDeniedError::class,
+        'application_expired' => PermissionDeniedError::class,
+        'application_deactivated' => PermissionDeniedError::class,
+        'quota_exceeded' => QuotaExceededError::class,
+        'invalid_payload' => InvalidRequestError::class,
+        'invalid_check_duplicate' => InvalidRequestError::class,
+        'invalid_request' => InvalidRequestError::class,
+        'invalid_type' => InvalidRequestError::class,
+        'invalid_transaction_id' => InvalidRequestError::class,
+        'invalid_sender_name' => InvalidRequestError::class,
+        'invalid_receiver_name' => InvalidRequestError::class,
+        'invalid_receiver_phone' => InvalidRequestError::class,
+        'invalid_date' => InvalidRequestError::class,
+        'invalid_amount' => InvalidRequestError::class,
+        'invalid_image' => InvalidImageError::class,
+        'invalid_wallet_qr' => InvalidImageError::class,
+        'invalid_base64' => InvalidImageError::class,
+        'image_size_too_large' => InvalidImageError::class,
+        'invalid_url' => InvalidUrlError::class,
+        'url_unreachable' => InvalidUrlError::class,
+        'duplicate_slip' => DuplicateSlipError::class,
+        'slip_not_found' => SlipNotFoundError::class,
+        'qrcode_not_found' => SlipNotFoundError::class,
+        'slip_pending' => SlipPendingError::class,
+        'not_found' => NotFoundError::class,
+        'rate_limit_exceeded' => RateLimitError::class,
+        'server_error' => ServerError::class,
+        'api_server_error' => ServerError::class,
+        'renewal_temporarily_unavailable' => ServiceUnavailableError::class,
+    ];
+
+    /** @var array<int, class-string<ApiError>> */
+    public const STATUS = [
+        400 => InvalidRequestError::class,
+        401 => AuthenticationError::class,
+        403 => PermissionDeniedError::class,
+        404 => NotFoundError::class,
+        409 => ConflictError::class,
+        429 => RateLimitError::class,
+        500 => ServerError::class,
+        502 => ServerError::class,
+        503 => ServiceUnavailableError::class,
+        504 => ServerError::class,
+    ];
+}

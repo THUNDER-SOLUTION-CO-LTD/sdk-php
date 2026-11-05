@@ -1,0 +1,86 @@
+{
+    "name": "thunder-solution/sdk",
+    "description": "Official Thunder SDK for PHP: verify Thai bank slips and TrueMoney Wallet receipts, generate payment QR codes and check webhook signatures.",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "thunder",
+        "slip",
+        "slip-verification",
+        "promptpay",
+        "truemoney",
+        "thai-bank",
+        "qr-code",
+        "payment",
+        "sdk",
+        "psr-18"
+    ],
+    "authors": [
+        {
+            "name": "Thunder Solution Co., Ltd."
+        }
+    ],
+    "homepage": "https://github.com/THUNDER-SOLUTION-CO-LTD/sdk-php",
+    "support": {
+        "issues": "https://github.com/THUNDER-SOLUTION-CO-LTD/sdk-php/issues",
+        "source": "https://github.com/THUNDER-SOLUTION-CO-LTD/sdk-php",
+        "docs": "https://document.thunder.in.th/en/sdk/php",
+        "security": "https://github.com/THUNDER-SOLUTION-CO-LTD/sdk-php/security/advisories/new"
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-fileinfo": "*",
+        "guzzlehttp/guzzle": "^7.16 || ^8.3",
+        "php-http/discovery": "^1.20",
+        "psr/http-client": "^1.0.3",
+        "psr/http-factory": "^1.1",
+        "psr/http-message": "^2.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.95.27",
+        "phpstan/phpstan": "^2.3.4",
+        "phpunit/phpunit": "^11.5.57 || ^12.5.42 || ^13.4.5",
+        "symfony/http-client": "^7.4.22 || ^8.1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thunder\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Thunder\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "check": [
+            "@lint",
+            "@format:check",
+            "@analyse",
+            "@test"
+        ],
+        "format": "php-cs-fixer fix",
+        "format:check": "php-cs-fixer check --diff",
+        "lint": "find src tests examples .php-cs-fixer.dist.php -name '*.php' -print0 | xargs -0 -n1 php -d display_errors=stderr -l > /dev/null",
+        "test": "phpunit --testsuite unit,conformance,readme",
+        "test:coverage": "phpunit --testsuite unit,conformance,readme --coverage-text",
+        "test:integration": "phpunit --testsuite integration"
+    },
+    "scripts-descriptions": {
+        "analyse": "Run PHPStan at the max level over src and examples.",
+        "check": "Run the syntax, format, static analysis and test checks that CI runs.",
+        "format": "Format the code.",
+        "format:check": "Check the formatting without changing files.",
+        "lint": "Check the syntax of every PHP file.",
+        "test": "Run the unit, conformance and README tests.",
+        "test:coverage": "Run the unit, conformance and README tests with a coverage report.",
+        "test:integration": "Run the integration tests against the live API (needs THUNDER_API_KEY)."
+    }
+}

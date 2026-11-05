@@ -1,0 +1,17 @@
+# Dependencies. A library does not commit composer.lock: CI resolves the newest versions
+# each PHP version allows, and a separate job checks the lowest allowed versions.
+/vendor/
+/composer.lock
+
+# Tool output
+/build/
+/.phpunit.cache/
+/.php-cs-fixer.cache
+
+# Local settings and secrets
+.env
+.env.*
+*.key
+.idea/
+.vscode/
+.DS_Store
