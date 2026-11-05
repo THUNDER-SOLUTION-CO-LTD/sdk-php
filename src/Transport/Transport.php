@@ -27,7 +27,7 @@ final class Transport
         private readonly string $apiKey,
         private readonly int $maxRetries = 2,
         ?\Closure $sleep = null,
-        private readonly string $userAgent = 'thunder-slip-php/0.0.0', // x-release-please-version
+        private readonly string $userAgent = 'thunder-slip-php/1.0.0', // x-release-please-version
         private readonly float $timeout = 30.0,
     ) {
         if ($maxRetries < 0 || $maxRetries > 10) {
